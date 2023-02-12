@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var items: [String] = ["This is the first item","This is the second item","This is the third item"]
+    @State var items: [String] = ["This is the first item","This is the second item","This is the third item", "This is the fourth item"]
     
     var body: some View {
         List {
