@@ -9,19 +9,15 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var items: [ItemModel] = [
-    ItemModel(title: "This is the first item", isCompleted: false),
-    ItemModel(title: "This is the second item", isCompleted: true),
-    ItemModel(title: "This is the third item", isCompleted: false)
-    ]
+    @StateObject var listViewModel: ListViewModel = ListViewModel()
     
     var body: some View {
         List {
-            ForEach(items) { item in
+            ForEach(listViewModel.items) { item in
                 ListRowView(item: item)
             }
-            .onDelete(perform: delete)
-            .onMove(perform: move)
+            .onDelete(perform: listViewModel.delete)
+            .onMove(perform: listViewModel.move)
         }
         .navigationTitle("Todo List 📝")
         .toolbar {
@@ -32,14 +28,6 @@ struct ListView: View {
                 NavigationLink("Add", destination: AddView())
             }
         }
-    }
-    
-    func delete(indexSet: IndexSet){
-        items.remove(atOffsets: indexSet)
-    }
-    
-    func move(from: IndexSet, to: Int){
-        items.move(fromOffsets: from, toOffset: to)
     }
 }
 
