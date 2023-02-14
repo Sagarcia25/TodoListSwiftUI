@@ -7,6 +7,17 @@
 
 import Foundation
 
+/*
+ CRUD FUNCTIONS
+ 
+ CREATE
+ READ
+ UPDATE
+ DELETE
+ 
+ */
+
+
 class ListViewModel: ObservableObject{
     @Published var items: [ItemModel] = []
     
@@ -33,11 +44,21 @@ class ListViewModel: ObservableObject{
         items.append(contentsOf: newItems)
     }
     
+    func updateItem(item: ItemModel){
+//        if let index = items.firstIndex { existingItem in
+//            return existingItem.id == item.id
+//        }{
+//
+//        }
+        
+        if let index = items.firstIndex(where: { $0.id == item.id }){
+            items[index] = item.updateCompletion()
+        }
+    }
+    
     //MARK: - AddView functions
     func saveItem(title: String){
-        if title.count > 3{
             let newItem = ItemModel(title: title, isCompleted: false)
             items.append(newItem)
-        }
     }
 }

@@ -13,6 +13,9 @@ struct AddView: View {
     @EnvironmentObject var listVieModel: ListViewModel
     @State var textFieldText: String = ""
     
+    @State var alertTitle: String = ""
+    @State var showAlert: Bool = false
+    
     
     var body: some View {
         ScrollView {
@@ -33,17 +36,29 @@ struct AddView: View {
                         .background(Color.accentColor)
                         .cornerRadius(10)
                 }
-
             }
             .padding(14)
         }
         .navigationTitle("Add an Item 🖊")
+        .alert("Your new todo item must be at least 3 characters long 😨", isPresented: $showAlert) {
+            
+        }
     }
     
     func saveButtonPressed(){
-        listVieModel.saveItem(title: textFieldText)
-        textFieldText = ""
-        dismiss()
+        if textIsAppropriate(){
+            listVieModel.saveItem(title: textFieldText)
+            textFieldText = ""
+            dismiss()
+        }
+    }
+    
+    func textIsAppropriate() -> Bool{
+        if textFieldText.count < 3{
+            showAlert.toggle()
+            return false
+        }
+        return true
     }
     
 }
