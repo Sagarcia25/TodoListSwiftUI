@@ -14,12 +14,16 @@ import Foundation
  READ
  UPDATE
  DELETE
- 
  */
 
-
 class ListViewModel: ObservableObject{
-    @Published var items: [ItemModel] = []
+    @Published var items: [ItemModel] = [] {
+        //Anytime items array is changed, didSet gets called
+        didSet{
+            saveItems()
+        }
+    }
+    let itemsKey: String = "items_list"
     
     init(){
         getItem()
@@ -36,12 +40,12 @@ class ListViewModel: ObservableObject{
     }
     
     func getItem(){
-        let newItems = [
-            ItemModel(title: "This is the first item", isCompleted: false),
-            ItemModel(title: "This is the second item", isCompleted: true),
-            ItemModel(title: "This is the third item", isCompleted: false)
-            ]
-        items.append(contentsOf: newItems)
+        guard let data = UserDefaults.standard.data(forKey: itemsKey),
+              let savedItem = try? JSONDecoder().decode([ItemModel].self, from: data) else{
+            return
+        }
+        items = savedItem
+        
     }
     
     func updateItem(item: ItemModel){
@@ -57,8 +61,15 @@ class ListViewModel: ObservableObject{
     }
     
     //MARK: - AddView functions
-    func saveItem(title: String){
+    func addItem(title: String){
             let newItem = ItemModel(title: title, isCompleted: false)
             items.append(newItem)
+    }
+    
+    //Use UserDefaults over @AppStorage because we are in a class
+    func saveItems(){
+        if let encodedData = try? JSONEncoder().encode(items){
+            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+        }
     }
 }

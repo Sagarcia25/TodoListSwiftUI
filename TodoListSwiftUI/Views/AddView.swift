@@ -47,7 +47,7 @@ struct AddView: View {
     
     func saveButtonPressed(){
         if textIsAppropriate(){
-            listVieModel.saveItem(title: textFieldText)
+            listVieModel.addItem(title: textFieldText)
             textFieldText = ""
             dismiss()
         }
