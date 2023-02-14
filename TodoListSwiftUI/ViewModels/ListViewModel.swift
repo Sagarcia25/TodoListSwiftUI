@@ -14,6 +14,8 @@ class ListViewModel: ObservableObject{
         getItem()
     }
     
+    //MARK: - ListView Functions
+    
     func delete(indexSet: IndexSet){
         items.remove(atOffsets: indexSet)
     }
@@ -29,5 +31,13 @@ class ListViewModel: ObservableObject{
             ItemModel(title: "This is the third item", isCompleted: false)
             ]
         items.append(contentsOf: newItems)
+    }
+    
+    //MARK: - AddView functions
+    func saveItem(title: String){
+        if title.count > 3{
+            let newItem = ItemModel(title: title, isCompleted: false)
+            items.append(newItem)
+        }
     }
 }
