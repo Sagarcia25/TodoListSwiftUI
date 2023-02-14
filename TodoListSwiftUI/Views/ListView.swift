@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
     
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
+    @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
         List {
@@ -36,6 +36,8 @@ struct ListView_Previews: PreviewProvider {
         NavigationStack {
             ListView()
         }
+        //To fix Environment previews, pass an instants of the observable object
+        .environmentObject(ListViewModel())
     }
 }
 
