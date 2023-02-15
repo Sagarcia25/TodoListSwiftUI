@@ -15,6 +15,7 @@
 		7A2F7851299990B700407B68 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2F7850299990B700407B68 /* AddView.swift */; };
 		7A2F78542999983C00407B68 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2F78532999983C00407B68 /* ItemModel.swift */; };
 		7A2F7857299B25FB00407B68 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2F7856299B25FB00407B68 /* ListViewModel.swift */; };
+		7A2F7859299C78F100407B68 /* NoItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2F7858299C78F100407B68 /* NoItemsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		7A2F7850299990B700407B68 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		7A2F78532999983C00407B68 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		7A2F7856299B25FB00407B68 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		7A2F7858299C78F100407B68 /* NoItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				7A2F784C29998DD900407B68 /* ListView.swift */,
 				7A2F784E29998F0D00407B68 /* ListRowView.swift */,
 				7A2F7850299990B700407B68 /* AddView.swift */,
+				7A2F7858299C78F100407B68 /* NoItemsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				7A2F7857299B25FB00407B68 /* ListViewModel.swift in Sources */,
 				7A2F783C29998D3000407B68 /* TodoListSwiftUIApp.swift in Sources */,
 				7A2F784D29998DD900407B68 /* ListView.swift in Sources */,
+				7A2F7859299C78F100407B68 /* NoItemsView.swift in Sources */,
 				7A2F784F29998F0D00407B68 /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

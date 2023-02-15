@@ -12,17 +12,23 @@ struct ListView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
-        List {
-            ForEach(listViewModel.items) { item in
-                ListRowView(item: item)
-                    .onTapGesture {
-                        withAnimation(.linear){
-                            listViewModel.updateItem(item: item)
-                        }
+        ZStack{
+            if listViewModel.items.isEmpty{
+                Text("No Items")
+            } else {
+                List {
+                    ForEach(listViewModel.items) { item in
+                        ListRowView(item: item)
+                            .onTapGesture {
+                                withAnimation(.linear){
+                                    listViewModel.updateItem(item: item)
+                                }
+                            }
                     }
+                    .onDelete(perform: listViewModel.delete)
+                    .onMove(perform: listViewModel.move)
+                }
             }
-            .onDelete(perform: listViewModel.delete)
-            .onMove(perform: listViewModel.move)
         }
         .navigationTitle("Todo List 📝")
         .toolbar {
